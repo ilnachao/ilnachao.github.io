@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="石室联中西区官方网站，提供学校概况、招生信息、教育教学、校园文化及新闻动态等权威资讯。">
+    <meta name="keywords" content="石室联中西区, 成都石室中学西区, 高中, 招生, 教育资讯">
+    <title>石室联中西区-成都石室中学西区官方网站与教育资讯平台</title>
+    <style>
+        :root {
+            --primary-color: #8B0000; /* 官方红 */
+            --secondary-color: #1a1a1a;
+            --accent-color: #d4af37; /* 香槟金 */
+            --text-color: #333333;
+            --light-text: #666666;
+            --bg-color: #f9f9f9;
+            --white: #ffffff;
+            --border-radius: 4px;
+            --container-width: 1200px;
+            --spacing-unit: 1rem;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        .section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
+            margin: 10px auto 0;
+        }
+
+        .section-title p {
+            color: var(--light-text);
+            font-size: 1rem;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-top {
+            background-color: var(--secondary-color);
+            color: #ccc;
+            font-size: 0.85rem;
+            padding: 8px 0;
+        }
+
+        .header-top .container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .header-main {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo span {
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+            font-weight: normal;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--secondary-color);
+            font-size: 1.05rem;
+            padding: 5px 0;
+            position: relative;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 500px;
+            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://picsum.photos/seed/sishilianxi/1920/1080.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background-color: #a00000;
+            border-color: #a00000;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+            margin-left: 10px;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--white);
+            color: var(--secondary-color);
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            background-color: var(--white);
+            margin-top: -50px;
+            position: relative;
+            z-index: 10;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            padding: 30px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+            border-right: 1px solid #eee;
+        }
+
+        .stat-item:last-child {
+            border-right: none;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: block;
+        }
+
+        .stat-label {
+            color: var(--light-text);
+            font-size: 1rem;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .about-image img {
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        /* Features */
+        .features {
+            background-color: var(--white);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--bg-color);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.25rem;
+        }
+
+        .feature-card p {
+            color: var(--light-text);
+            font-size: 0.95rem;
+        }
+
+        /* News & Events */
+        .news-section {
+            background-color: var(--bg-color);
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        .news-list {
+            background: var(--white);
+            padding: 20px;
+            border-radius: var(--border-radius);
+        }
+
+        .news-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .news-item:last-child {
+            border-bottom: none;
+        }
+
+        .news-date {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-right: 15px;
+            min-width: 70px;
+            text-align: center;
+        }
+
+        .news-title {
+            font-size: 1rem;
+            font-weight: 500;
+            flex: 1;
+        }
+
+        .news-title a:hover {
+            color: var(--primary-color);
+        }
+
+        .news-sidebar h3 {
+            margin-bottom: 20px;
+            border-left: 4px solid var(--primary-color);
+            padding-left: 10px;
+        }
+
+        .notice-list li {
+            padding: 10px 0;
+            border-bottom: 1px dashed #eee;
+        }
+
+        .notice-list a {
+            display: block;
+            font-size: 0.95rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .notice-list a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Call to Action */
+        .cta-section {
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            margin-bottom: 15px;
+        }
+
+        .cta-section p {
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: #aaa;
+            padding: 60px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .footer-col p {
+            margin-bottom: 10px;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .stats-bar {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-main nav {
+                display: none;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            .stats-bar {
+                grid-template-columns: 1fr;
+                margin-top: 20px;
+            }
+            .stat-item {
+                border-right: none;
+                border-bottom: 1px solid #eee;
+                padding-bottom: 15px;
+            }
+            .stat-item:last-child {
+                border-bottom: none;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <span>欢迎访问成都石室中学西区官方网站</span>
+                <span>咨询热线：028-xxxxxxxx</span>
+            </div>
+        </div>
+        <div class="container header-main">
+            <a href="#" class="logo">
+                石室联中西区
+                <span>Chengdu Shishi High School West Campus</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#about">学校概况</a></li>
+                    <li><a href="#features">办学特色</a></li>
+                    <li><a href="#news">新闻动态</a></li>
+                    <li><a href="#admissions">招生信息</a></li>
+                    <li><a href="#contact">联系我们</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn">☰</div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content container">
+                <h1>传承石室文脉，培育时代英才</h1>
+                <p>成都石室中学西区（石室联中西区）秉承石室中学百年的优良传统，致力于打造高品质、现代化、国际化的高中教育平台。</p>
+                <div class="hero-buttons">
+                    <a href="#about" class="btn btn-primary">了解学校</a>
+                    <a href="#contact" class="btn btn-outline">预约参观</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <div class="container">
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">本科上线率</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">500+</span>
+                    <span class="stat-label">获奖学生</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">80+</span>
+                    <span class="stat-label">精品课程</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">20+</span>
+                    <span class="stat-label">国际交流</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>学校概况</h2>
+                    <p>About Our School</p>
+                </div>
+                <div class="about-content">
+                    <div class="about-text">
+                        <h3>百年名校，现代传承</h3>
+                        <p>石室中学西区（石室联中西区）是成都市教育局直属公办完全中学。学校依托成都石室中学深厚的文化底蕴和先进的教育理念，在继承石室“爱国、团结、求实、创新”精神的基础上，构建了具有鲜明特色的现代化办学体系。</p>
+                        <p>学校位于成都市郫都区，校园环境优美，教学设施先进。我们坚持以学生发展为本，注重学生综合素质的培养，致力于培养具有国际视野、家国情怀和社会责任感的优秀人才。</p>
+                        <a href="#" style="color: var(--primary-color); font-weight: bold;">阅读更多关于学校历史 &rarr;</a>
+                    </div>
+                    <div class="about-image">
+                        <img src="https://picsum.photos/seed/school_building/600/400.jpg" alt="石室联中西区校园环境">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="section features">
+            <div class="container">
+                <div class="section-title">
+                    <h2>办学特色</h2>
+                    <p>Core Competencies</p>
+                </div>
+                <div class="features-grid">
+                    <article class="feature-card">
+                        <div class="feature-icon">🎓</div>
+                        <h3>卓越教学</h3>
+                        <p>实施小班化教学与分层教学策略，关注每一位学生的成长，确保教学质量的稳步提升。</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-icon">🔬</div>
+                        <h3>科创教育</h3>
+                        <p>建立创客实验室与机器人社团，激发学生创新思维，在各类科技竞赛中屡获佳绩。</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-icon">🌍</div>
+                        <h3>国际视野</h3>
+                        <p>与多所海外名校建立合作关系，开设国际课程班，为学生提供多元化的升学通道。</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-icon">🏆</div>
+                        <h3>全面发展</h3>
+                        <p>丰富多彩的社团活动与体育赛事，促进学生德智体美劳全面发展，塑造健全人格。</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- News & Events -->
+        <section id="news" class="section news-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>新闻动态</h2>
+                    <p>News & Events</p>
+                </div>
+                <div class="news-grid">
+                    <div class="news-list">
+                        <h3>学校要闻</h3>
+                        <div class="news-item">
+                            <span class="news-date">10-24</span>
+                            <a href="#" class="news-title">石室联中西区举行2024年秋季田径运动会开幕式</a>
+                        </div>
+                        <div class="news-item">
+                            <span class="news-date">10-20</span>
+                            <a href="#" class="news-title">我校教师在成都市高中数学优质课展评中荣获一等奖</a>
+                        </div>
+                        <div class="news-item">
+                            <span class="news-date">10-15</span>
+                            <a href="#" class="news-title">成都石室中学西区与XX高校签署战略合作协议</a>
+                        </div>
+                        <div class="news-item">
+                            <span class="news-date">10-10</span>
+                            <a href="#" class="news-title">关于开展“弘扬石室文化，传承红色基因”主题活动的通知</a>
+                        </div>
+                        <div class="news-item">
+                            <span class="news-date">10-05</span>
+                            <a href="#" class="news-title">我校学子在全国青少年科技创新大赛中斩获金奖</a>
+                        </div>
+                    </div>
+                    <aside class="news-sidebar">
+                        <div class="notice-list">
+                            <h3>通知公告</h3>
+                            <li><a href="#">2024年秋季学期期末考试安排</a></li>
+                            <li><a href="#">关于周末图书馆开放的通知</a></li>
+                            <li><a href="#">校园网络维护公告</a></li>
+                            <li><a href="#">关于学生宿舍安全检查的通知</a></li>
+                            <li><a href="#">关于举办校园文化艺术节的通知</a></li>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="section cta-section">
+            <div class="container">
+                <h2>加入石室联中西区大家庭</h2>
+                <p>我们期待有梦想、有追求的学子加入，共同书写未来篇章。</p>
+                <a href="#contact" class="btn" style="background-color: var(--white); color: var(--primary-color);">咨询招生办</a>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>联系我们</h2>
+                    <p>Contact Us</p>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
+                    <div>
+                        <h3>学校地址</h3>
+                        <p>四川省成都市郫都区XX路XX号</p>
+                        <br>
+                        <h3>招生咨询</h3>
+                        <p>电话：028-xxxxxxxx</p>
+                        <p>邮箱：admissions@shishilx.com</p>
+                    </div>
+                    <div>
+                        <h3>办公时间</h3>
+                        <p>周一至周五：上午 8:00 - 12:00</p>
+                        <p>下午 14:00 - 18:00</p>
+                        <br>
+                        <h3>交通路线</h3>
+                        <p>地铁X号线XX站，步行约500米。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>石室联中西区</h4>
+                    <p>秉承石室文脉，铸就教育辉煌。成都石室中学西区致力于为学生提供最优质的高中教育资源。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速链接</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">学校概况</a></li>
+                        <li><a href="#">师资队伍</a></li>
+                        <li><a href="#">校园风光</a></li>
+                        <li><a href="#">下载中心</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>招生服务</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">招生政策</a></li>
+                        <li><a href="#">志愿填报</a></li>
+                        <li><a href="#">常见问题</a></li>
+                        <li><a href="#">在线咨询</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>关注我们</h4>
+                    <p>微信公众号：石室联中西区</p>
+                    <p>官方微博：@成都石室中学西区</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 成都石室中学西区 版权所有 | 川ICP备XXXXXXXX号</p>
+            </div>
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</body>
+      </html>
