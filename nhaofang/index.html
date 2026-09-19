@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="N号房事件专题页，提供韩国N号房真实案件回顾、受害者故事、社会影响分析及网络犯罪防范指南。">
+    <meta name="keywords" content="n号房, 韩国n号房, n号房事件, 网络犯罪, 性暴力, 社会警示">
+    <title>n号房-韩国N号房事件回顾与社会警示专题</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --bg-color: #f8f9fa;
+            --text-main: #2c3e50;
+            --text-secondary: #636e72;
+            --accent-red: #e74c3c;
+            --accent-dark: #2c3e50;
+            --card-bg: #ffffff;
+            --border-color: #e0e0e0;
+            --spacing-unit: 1rem;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: var(--accent-red);
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        /* Header */
+        header {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-dark);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--accent-red);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 24px;
+        }
+
+        nav a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        nav a.active {
+            color: var(--accent-red);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2c3e50 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 24px;
+            opacity: 0.9;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 30px;
+        }
+
+        .stat-item h3 {
+            font-size: 2rem;
+            color: var(--accent-red);
+            font-weight: 700;
+        }
+
+        .stat-item p {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin: 0;
+        }
+
+        /* Main Content Grid */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 32px;
+            margin-top: -40px;
+            margin-bottom: 60px;
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 48px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 24px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-dark);
+        }
+
+        .section-link {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Timeline Cards */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .timeline-item {
+            background: var(--card-bg);
+            padding: 24px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            gap: 20px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .timeline-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border-color: #ccc;
+        }
+
+        .date-box {
+            flex-shrink: 0;
+            background: #f1f2f6;
+            padding: 12px;
+            border-radius: 6px;
+            text-align: center;
+            min-width: 80px;
+        }
+
+        .date-box .day {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-red);
+            line-height: 1;
+        }
+
+        .date-box .month {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+        }
+
+        .content-box h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+
+        .content-box p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 2px 8px;
+            background: #e8f4f8;
+            color: #2980b9;
+            font-size: 0.75rem;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        /* Sidebar */
+        aside .card {
+            background: var(--card-bg);
+            padding: 24px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 24px;
+        }
+
+        aside h3 {
+            font-size: 1.1rem;
+            margin-bottom: 16px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-red);
+            display: inline-block;
+        }
+
+        .warning-list {
+            list-style: none;
+        }
+
+        .warning-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .warning-list li::before {
+            content: "!";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            background: var(--accent-red);
+            color: white;
+            border-radius: 50%;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .quote-box {
+            font-style: italic;
+            color: var(--text-secondary);
+            border-left: 3px solid var(--accent-red);
+            padding-left: 16px;
+            margin-top: 16px;
+        }
+
+        /* Impact Grid */
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin-top: 24px;
+        }
+
+        .impact-card {
+            background: white;
+            padding: 24px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .impact-icon {
+            font-size: 2rem;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .impact-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .impact-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a1a1a;
+            color: #bdc3c7;
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .footer-col {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-col h5 {
+            color: white;
+            margin-bottom: 16px;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col a:hover {
+            color: white;
+        }
+
+        .disclaimer {
+            font-size: 0.8rem;
+            color: #7f8c8d;
+            margin-top: 40px;
+            text-align: center;
+            border-top: 1px solid #333;
+            padding-top: 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav ul {
+                display: none; /* Simplified for mobile */
+            }
+            
+            .header-inner {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                <span>⚠</span> N号房警示
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">事件回顾</a></li>
+                    <li><a href="#">案件详情</a></li>
+                    <li><a href="#">防范指南</a></li>
+                    <li><a href="#">社会反思</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>韩国“N号房”事件回顾</h1>
+                <p>这是一场涉及网络性犯罪与监控的黑暗历史。通过回顾案件真相，我们旨在提高公众对网络犯罪的认识，保护弱势群体，并维护网络空间的清朗。</p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <h3>82</h3>
+                        <p>相关聊天室</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>10万+</h3>
+                        <p>会员规模</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>69</h3>
+                        <p>涉案嫌疑人</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="content-grid">
+                <!-- Main Content Area -->
+                <div class="main-column">
+                    
+                    <!-- Event Timeline -->
+                    <section>
+                        <div class="section-header">
+                            <h2 class="section-title">事件时间线</h2>
+                            <a href="#" class="section-link">查看全部 &rarr;</a>
+                        </div>
+                        <div class="timeline">
+                            <article class="timeline-item">
+                                <div class="date-box">
+                                    <div class="day">3月</div>
+                                    <div class="month">2018</div>
+                                </div>
+                                <div class="content-box">
+                                    <h3>案件曝光</h3>
+                                    <p>韩国警方接到举报，发现名为“Choi”的账号在Telegram上建立了多个加密聊天室，内容涉及非法拍摄与性剥削。</p>
+                                    <span class="tag">警方调查</span>
+                                </div>
+                            </article>
+
+                            <article class="timeline-item">
+                                <div class="date-box">
+                                    <div class="day">3</div>
+                                    <div class="month">2018</div>
+                                </div>
+                                <div class="content-box">
+                                    <h3>大规模搜查</h3>
+                                    <p>韩国警方成立特别调查本部，对“N号房”及其关联的“V号房”进行突击搜查，逮捕主要嫌疑人赵斗淳等。</p>
+                                    <span class="tag">逮捕嫌疑人</span>
+                                </div>
+                            </article>
+
+                            <article class="timeline-item">
+                                <div class="date-box">
+                                    <div class="day">3</div>
+                                    <div class="month">2018</div>
+                                </div>
+                                <div class="content-box">
+                                    <h3>公众抗议</h3>
+                                    <p>韩国多地爆发大规模烛光集会，数十万人走上街头，要求政府严厉打击网络性犯罪，保障女性安全。</p>
+                                    <span class="tag">社会运动</span>
+                                </div>
+                            </article>
+
+                            <article class="timeline-item">
+                                <div class="date-box">
+                                    <div class="day">3</div>
+                                    <div class="month">2019</div>
+                                </div>
+                                <div class="content-box">
+                                    <h3>案件宣判</h3>
+                                    <p>首尔中央地方法院对“N号房”主犯赵斗淳等18人作出一审判决，最高刑期被判42年。</p>
+                                    <span class="tag">法律审判</span>
+                                </div>
+                            </article>
+                        </div>
+                    </section>
+
+                    <!-- Impact & Reflection -->
+                    <section>
+                        <div class="section-header">
+                            <h2 class="section-title">社会影响与反思</h2>
+                        </div>
+                        <div class="impact-grid">
+                            <div class="impact-card">
+                                <span class="impact-icon">🔒</span>
+                                <h4>加密通讯软件滥用</h4>
+                                <p>事件暴露了加密聊天软件在保护隐私的同时，也可能被犯罪分子利用进行非法活动。</p>
+                            </div>
+                            <div class="impact-card">
+                                <span class="impact-icon">👁️</span>
+                                <h4>监控文化</h4>
+                                <p>受害者被迫拍摄视频供罪犯取乐，这种极端的监控文化严重侵犯了个人尊严。</p>
+                            </div>
+                            <div class="impact-card">
+                                <span class="impact-icon">📢</span>
+                                <h4>公众意识觉醒</h4>
+                                <p>案件极大地推动了韩国及全球范围内对网络性暴力犯罪的关注和法律修订。</p>
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+
+                <!-- Sidebar -->
+                <aside class="sidebar">
+                    <div class="card">
+                        <h3>防范网络犯罪</h3>
+                        <ul class="warning-list">
+                            <li>不要在私密网络群组中发布个人隐私信息。</li>
+                            <li>警惕陌生人发送的诱导性链接或视频邀请。</li>
+                            <li>安装正规杀毒软件，保护个人设备安全。</li>
+                            <li>遇到此类犯罪行为，应立即保留证据并报警。</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h3>案件关键数据</h3>
+                        <p style="font-size: 0.9rem; color: #666; margin-bottom: 10px;">截至调查结束时的统计：</p>
+                        <ul class="warning-list">
+                            <li><strong>受害女性：</strong> 74人（其中部分受害者多次被拍摄）</li>
+                            <li><strong>主要犯罪手法：</strong> 虚假招募模特、诱骗拍摄</li>
+                            <li><strong>Telegram使用：</strong> 被用作主要的犯罪沟通工具</li>
+                        </ul>
+                        <div class="quote-box">
+                            “黑暗不是黑暗，它只是没有光。”<br>
+                            <small>—— 案件相关社会评论</small>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h5>N号房警示</h5>
+                    <p style="font-size: 0.9rem; line-height: 1.8;">
+                        本网站旨在提供客观的案件回顾与安全知识普及。我们反对任何形式的性暴力犯罪，致力于维护网络空间的法治与秩序。
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h5>快速链接</h5>
+                    <ul>
+                        <li><a href="#">韩国N号房案件详情</a></li>
+                        <li><a href="#">性犯罪防治法修订</a></li>
+                        <li><a href="#">网络举报中心</a></li>
+                        <li><a href="#">受害者援助热线</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>法律声明</h5>
+                    <ul>
+                        <li><a href="#">隐私政策</a></li>
+                        <li><a href="#">免责声明</a></li>
+                        <li><a href="#">联系我们</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="disclaimer">
+                <p>本页面内容仅供参考，不构成任何法律建议。所有信息均基于公开报道整理。</p>
+                <p>&copy; 2023 N号房警示专题页. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
