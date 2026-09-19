@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>冒险岛双刀风暴 - 双刀职业深度解析、技能加点与实战攻略指南</title>
+    <meta name="description" content="本站提供《冒险岛》双刀职业的全面攻略，包括双刀风暴技能详解、技能加点方案、装备搭配推荐、BOSS输出循环以及双刀风暴在团本中的实战技巧。">
+    <meta name="keywords" content="冒险岛双刀风暴,冒险岛双刀,冒险岛技能加点,冒险岛装备搭配,冒险岛双刀攻略">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #d32f2f;
+            --secondary-color: #1976d2;
+            --accent-color: #ffca28;
+            --bg-dark: #121212;
+            --bg-card: #1e1e1e;
+            --text-main: #ffffff;
+            --text-muted: #b0bec5;
+            --border-radius: 8px;
+            --spacing: 20px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Header & Nav */
+        header {
+            background-color: rgba(30, 30, 30, 0.95);
+            border-bottom: 1px solid #333;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing);
+            height: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+
+        nav a.active {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 500px;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('https://picsum.photos/seed/maplestory/1920/1080.jpg') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 var(--spacing);
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+
+        .hero-content h1 span {
+            color: var(--primary-color);
+            border-bottom: 4px solid var(--accent-color);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #b71c1c;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--text-main);
+            margin-left: 10px;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--text-main);
+            color: var(--bg-dark);
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px var(--spacing);
+        }
+
+        section {
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            border-left: 5px solid var(--primary-color);
+            padding-left: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* Skill Tree Grid */
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-card {
+            background-color: var(--bg-card);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            border: 1px solid #333;
+            transition: border-color 0.3s;
+        }
+
+        .skill-card:hover {
+            border-color: var(--primary-color);
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .skill-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .skill-lv {
+            background-color: #333;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+
+        .skill-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+            background-color: #333;
+        }
+
+        .tag.active { background-color: rgba(211, 47, 47, 0.2); color: var(--primary-color); }
+        .tag.core { background-color: rgba(25, 118, 210, 0.2); color: var(--secondary-color); }
+
+        /* Build Guide Layout */
+        .build-layout {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+        }
+
+        .build-sidebar {
+            background-color: var(--bg-card);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            height: fit-content;
+        }
+
+        .build-sidebar h3 {
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+        }
+
+        .stat-val { font-weight: bold; color: var(--accent-color); }
+
+        .build-content article {
+            margin-bottom: 30px;
+        }
+
+        .build-content h3 {
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+
+        .build-content p {
+            margin-bottom: 10px;
+            color: #ccc;
+        }
+
+        /* Equipment Table */
+        .equip-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .equip-table th, .equip-table td {
+            text-align: left;
+            padding: 12px;
+            border-bottom: 1px solid #333;
+        }
+
+        .equip-table th {
+            color: var(--text-muted);
+            font-weight: 500;
+            width: 30%;
+        }
+
+        .equip-table tr:hover {
+            background-color: rgba(255,255,255,0.02);
+        }
+
+        /* FAQ Accordion */
+        .faq-item {
+            background-color: var(--bg-card);
+            border-radius: var(--border-radius);
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 15px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            padding: 0 20px;
+            color: var(--text-muted);
+        }
+
+        .faq-item.open .faq-answer {
+            padding-bottom: 15px;
+            max-height: 200px; /* Adjust based on content */
+        }
+
+        .faq-item.open .faq-question {
+            color: var(--accent-color);
+        }
+
+        .arrow {
+            transition: transform 0.3s;
+        }
+
+        .faq-item.open .arrow {
+            transform: rotate(180deg);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #000;
+            padding: 40px var(--spacing);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid #333;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2rem; }
+            .build-layout { grid-template-columns: 1fr; }
+            .nav-container { flex-direction: column; height: auto; padding: 15px; }
+            nav ul { margin-top: 15px; flex-wrap: wrap; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo">双刀风暴攻略站</div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#skills">技能加点</a></li>
+                    <li><a href="#build">BD构建</a></li>
+                    <li><a href="#equipment">装备</a></li>
+                    <li><a href="#faq">常见问题</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>驾驭<span>双刀风暴</span>的极致输出</h1>
+                <p>从零打造顶配双刀，掌握核心技能循环，在团本中成为收割机。</p>
+                <div class="hero-btns">
+                    <a href="#skills" class="btn">查看技能加点</a>
+                    <a href="#build" class="btn btn-outline">阅读BD指南</a>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <!-- Skills Section -->
+            <section id="skills">
+                <h2 class="section-title">核心技能加点</h2>
+                <p style="margin-bottom: 20px; color: var(--text-muted);">双刀职业的核心在于被动技能的叠加与主动技能的爆发循环。以下是目前主流的“爆发型”加点方案。</p>
+                
+                <div class="skill-grid">
+                    <!-- Skill 1 -->
+                    <article class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">双刀精通</span>
+                            <span class="skill-lv">MAX</span>
+                        </div>
+                        <p class="skill-desc">提升双刀攻击力及暴击率。双刀职业的基石，必须点满。</p>
+                        <div class="skill-tags">
+                            <span class="tag core">被动</span>
+                            <span class="tag">必点</span>
+                        </div>
+                    </article>
+
+                    <!-- Skill 2 -->
+                    <article class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">双刀风暴</span>
+                            <span class="skill-lv">MAX</span>
+                        </div>
+                        <p class="skill-desc">核心群攻技能，释放期间大幅提升攻击速度和移动速度。</p>
+                        <div class="skill-tags">
+                            <span class="tag core">主动</span>
+                            <span class="tag">核心技能</span>
+                        </div>
+                    </article>
+
+                    <!-- Skill 3 -->
+                    <article class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">双刀连击</span>
+                            <span class="skill-lv">MAX</span>
+                        </div>
+                        <p class="skill-desc">对单个目标造成多次伤害。由于是单体技能，通常用于BOSS战补刀。</p>
+                        <div class="skill-tags">
+                            <span class="tag core">主动</span>
+                            <span class="tag">BOSS技能</span>
+                        </div>
+                    </article>
+
+                    <!-- Skill 4 -->
+                    <article class="skill-card">
+                        <div class="skill-header">
+                            <span class="skill-name">双刀突袭</span>
+                            <span class="skill-lv">MAX</span>
+                        </div>
+                        <p class="skill-desc">快速突进并攻击前方敌人。适合赶路或调整站位。</p>
+                        <div class="skill-tags">
+                            <span class="tag">位移</span>
+                            <span class="tag">保命</span>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Build Guide Section -->
+            <section id="build">
+                <h2 class="section-title">BD构建与属性分配</h2>
+                <div class="build-layout">
+                    <aside class="build-sidebar">
+                        <h3>属性优先级</h3>
+                        <div class="stat-row"><span>攻击力 (STR)</span> <span class="stat-val">最高优先级</span></div>
+                        <div class="stat-row"><span>暴击伤害</span> <span class="stat-val">次优先级</span></div>
+                        <div class="stat-row"><span>攻击速度 (ASPD)</span> <span class="stat-val">重要</span></div>
+                        <div class="stat-row"><span>暴击率</span> <span class="stat-val">建议达到100%</span></div>
+                        
+                        <h3 style="margin-top: 30px;">核心属性</h3>
+                        <ul style="padding-left: 20px; color: #ccc; font-size: 0.9rem; line-height: 1.8;">
+                            <li><strong>攻击速度 (ASP)</strong>：双刀风暴依赖高频攻击，ASP越高，技能循环越快。</li>
+                            <li><strong>双刀精通</strong>：直接提升面板攻击力，是数值增长的核心。</li>
+                            <li><strong>暴击伤害</strong>：双刀的高暴击属性决定了爆发上限。</li>
+                        </ul>
+                    </aside>
+
+                    <div class="build-content">
+                        <article>
+                            <h3>技能循环逻辑</h3>
+                            <p>双刀的输出循环依赖于“双刀风暴”状态的维持。在进入BOSS房间时，首先开启“双刀风暴”技能，利用高攻速快速积攒Buff或触发连击。当“双刀风暴”结束或需要短暂爆发时，切换使用“双刀连击”进行单体高伤输出。</p>
+                            <p>注意：在保持“双刀风暴”状态期间，尽量保持怪物在范围内，避免技能真空期。</p>
+                        </article>
+
+                        <article>
+                            <h3>天赋与被动选择</h3>
+                            <p>建议优先选择增加攻击力、暴击伤害以及攻击速度的天赋树分支。对于双刀职业，减少技能冷却时间（CD）的天赋同样具有很高的实战价值，可以让你更频繁地释放群攻技能清怪。</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Equipment Section -->
+            <section id="equipment">
+                <h2 class="section-title">装备搭配推荐</h2>
+                <table class="equip-table">
+                    <thead>
+                        <tr>
+                            <th>部位</th>
+                            <th>推荐装备/属性</th>
+                            <th>说明</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>武器</strong></td>
+                            <td>双刀 (高攻击力、暴击伤害加成)</td>
+                            <td>双刀风暴的核心，优先选择带有攻击力词条的武器。</td>
+                        </tr>
+                        <tr>
+                            <td><strong>副手</strong></td>
+                            <td>魔法石 (攻击力/CDR)</td>
+                            <td>增加攻击力是最直接的提升，CDR有助于技能循环。</td>
+                        </tr>
+                        <tr>
+                            <td><strong>披风</strong></td>
+                            <td>攻击力/暴击伤害</td>
+                            <td>披风属性通常较为随机，优先选择攻击类属性。</td>
+                        </tr>
+                        <tr>
+                            <td><strong>饰品</strong></td>
+                            <td>攻击力/速度</td>
+                            <td>双刀需要攻速，建议搭配攻速加成的饰品。</td>
+                        </tr>
+                        <tr>
+                            <td><strong>称号</strong></td>
+                            <td>攻击力/暴击伤害称号</td>
+                            <td>选择提供攻击力或双刀专属加成的称号。</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- FAQ Section -->
+            <section id="faq">
+                <h2 class="section-title">常见问题 (FAQ)</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        双刀风暴技能什么时候释放？
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>双刀风暴是双刀职业的起手技能和清怪核心。进入战斗后应立即开启，并在技能持续期间尽量保持移动和攻击，以维持伤害输出。</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        双刀职业适合新手吗？
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>双刀职业操作相对直观，输出模式以群攻为主。虽然需要一定的装备基础才能发挥最大威力，但其高爆发的特点非常吸引人。</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        如何快速提升双刀的伤害？
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>提升伤害主要依靠提升装备等级、强化装备、镶嵌宝石以及优化属性配比（攻击力、暴击伤害）。此外，保持“双刀风暴”技能处于激活状态也是关键。</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 冒险岛双刀风暴攻略站 | 仅供玩家交流与学习参考</p>
+    </footer>
+
+    <script>
+        // Simple FAQ Accordion Logic
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    // Close other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('open');
+                        }
+                    });
+                    // Toggle current item
+                    item.classList.toggle('open');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
