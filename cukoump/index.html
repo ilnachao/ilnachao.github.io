@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="粗口mp3 - 提供各类风格的真实口型与音频素材下载，包含影视解说、直播回放、情绪表达等场景。支持多种格式，满足创作者与内容制作需求。">
+    <meta name="keywords" content="粗口mp3,音频素材,影视解说,直播回放,声音素材,音效下载">
+    <title>粗口mp3 - 真实口型与音频素材下载中心</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #e74c3c;
+            --secondary-color: #2c3e50;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-light: #666666;
+            --border-radius: 8px;
+            --spacing: 20px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--card-bg);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing);
+            height: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            font-size: 0.95rem;
+            color: var(--text-main);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .btn-download {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .btn-download:hover {
+            background-color: #c0392b;
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .search-box {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            gap: 10px;
+        }
+
+        .search-box input {
+            flex: 1;
+            padding: 12px;
+            border-radius: 4px;
+            border: none;
+            outline: none;
+        }
+
+        .search-box button {
+            padding: 12px 24px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 var(--spacing);
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 30px;
+        }
+
+        /* Content Section */
+        .section-title {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            padding-left: 10px;
+            border-left: 4px solid var(--primary-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .card-img {
+            height: 160px;
+            background-color: #eee;
+            position: relative;
+        }
+
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            background: rgba(0,0,0,0.5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+        }
+
+        .card-body {
+            padding: 15px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-title {
+            font-size: 1rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+
+        .card-meta {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .card-desc {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 15px;
+            flex: 1;
+        }
+
+        .card-footer {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-sm {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            border-radius: 4px;
+            text-align: center;
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+
+        .btn-sm:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Sidebar */
+        aside {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .sidebar-widget {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .widget-title {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            background: #f1f1f1;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        .tag:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .info-list li {
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .info-list li::before {
+            content: "•";
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: #ccc;
+            padding: 40px 20px;
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        .footer-links {
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            margin: 0 10px;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .copyright {
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Audio Player Placeholder */
+        .audio-player {
+            width: 100%;
+            margin-top: 10px;
+            height: 32px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+                <span>素材库</span>
+            </div>
+            <nav class="nav-links">
+                <a href="#">首页</a>
+                <a href="#">影视解说</a>
+                <a href="#">直播回放</a>
+                <a href="#">游戏音效</a>
+                <a href="#">热门榜单</a>
+            </nav>
+            <a href="#" class="btn-download">免费下载</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>粗口mp3 音频素材中心</h1>
+        <p>收录海量真实口型与情绪化音频素材，专为内容创作者、视频剪辑师及直播解说服务，支持高清无损下载。</p>
+        <div class="search-box">
+            <input type="text" placeholder="搜索关键词（如：震惊、无语、吐槽）...">
+            <button>搜索</button>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Main Content -->
+        <main>
+            <section>
+                <div class="section-title">
+                    <h2>热门推荐</h2>
+                    <a href="#" style="font-size: 0.9rem; color: var(--primary-color);">查看全部 ></a>
+                </div>
+                <div class="card-grid">
+                    <!-- Card 1 -->
+                    <div class="card">
+                        <div class="card-img">
+                            <img src="https://picsum.photos/seed/audio1/300/200" alt="音频封面">
+                            <div class="play-icon" onclick="togglePlay(this)">▶</div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">影视解说：震惊全场</h3>
+                            <div class="card-meta">
+                                <span>时长: 3.5s</span>
+                                <span>大小: 45KB</span>
+                            </div>
+                            <p class="card-desc">适用于剧情反转、突发状况的音频素材，情绪饱满，适合短视频传播。</p>
+                            <div class="card-footer">
+                                <button class="btn-sm" onclick="showToast('开始下载...')">立即下载</button>
+                                <button class="btn-sm" onclick="showToast('已添加到播放列表')">试听</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="card">
+                        <div class="card-img">
+                            <img src="https://picsum.photos/seed/audio2/300/200" alt="音频封面">
+                            <div class="play-icon" onclick="togglePlay(this)">▶</div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">直播回放：无奈叹息</h3>
+                            <div class="card-meta">
+                                <span>时长: 2.1s</span>
+                                <span>大小: 32KB</span>
+                            </div>
+                            <p class="card-desc">捕捉真实直播中的无奈情绪，适合用于游戏解说或情感类视频的背景音。</p>
+                            <div class="card-footer">
+                                <button class="btn-sm" onclick="showToast('开始下载...')">立即下载</button>
+                                <button class="btn-sm" onclick="showToast('已添加到播放列表')">试听</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="card">
+                        <div class="card-img">
+                            <img src="https://picsum.photos/seed/audio3/300/200" alt="音频封面">
+                            <div class="play-icon" onclick="togglePlay(this)">▶</div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">游戏音效：嘲讽语音</h3>
+                            <div class="card-meta">
+                                <span>时长: 1.8s</span>
+                                <span>大小: 28KB</span>
+                            </div>
+                            <p class="card-desc">游戏对战中常用的嘲讽类口型素材，短促有力，增加视频趣味性。</p>
+                            <div class="card-footer">
+                                <button class="btn-sm" onclick="showToast('开始下载...')">立即下载</button>
+                                <button class="btn-sm" onclick="showToast('已添加到播放列表')">试听</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="card">
+                        <div class="card-img">
+                            <img src="https://picsum.photos/seed/audio4/300/200" alt="音频封面">
+                            <div class="play-icon" onclick="togglePlay(this)">▶</div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">情绪表达：愤怒咆哮</h3>
+                            <div class="card-meta">
+                                <span>时长: 4.2s</span>
+                                <span>大小: 68KB</span>
+                            </div>
+                            <p class="card-desc">高强度的愤怒情绪表达，适合用于解说冲突激烈的新闻或事件。</p>
+                            <div class="card-footer">
+                                <button class="btn-sm" onclick="showToast('开始下载...')">立即下载</button>
+                                <button class="btn-sm" onclick="showToast('已添加到播放列表')">试听</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section style="margin-top: 40px;">
+                <div class="section-title">
+                    <h2>最新更新</h2>
+                </div>
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="card-img">
+                            <img src="https://picsum.photos/seed/audio5/300/200" alt="音频封面">
+                            <div class="play-icon" onclick="togglePlay(this)">▶</div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">搞笑配音：无语凝噎</h3>
+                            <div class="card-meta">
+                                <span>时长: 2.0s</span>
+                                <span>大小: 30KB</span>
+                            </div>
+                            <div class="card-footer">
+                                <button class="btn-sm" onclick="showToast('开始下载...')">立即下载</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-img">
+                            <img src="https://picsum.photos/seed/audio6/300/200" alt="音频封面">
+                            <div class="play-icon" onclick="togglePlay(this)">▶</div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">情感解说：遗憾</h3>
+                            <div class="card-meta">
+                                <span>时长: 3.0s</span>
+                                <span>大小: 42KB</span>
+                            </div>
+                            <div class="card-footer">
+                                <button class="btn-sm" onclick="showToast('开始下载...')">立即下载</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-img">
+                            <img src="https://picsum.photos/seed/audio7/300/200" alt="音频封面">
+                            <div class="play-icon" onclick="togglePlay(this)">▶</div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">快节奏：过山车</h3>
+                            <div class="card-meta">
+                                <span>时长: 1.5s</span>
+                                <span>大小: 25KB</span>
+                            </div>
+                            <div class="card-footer">
+                                <button class="btn-sm" onclick="showToast('开始下载...')">立即下载</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Sidebar -->
+        <aside>
+            <div class="sidebar-widget">
+                <h4 class="widget-title">热门分类</h4>
+                <ul class="info-list">
+                    <li><a href="#">影视解说类</a></li>
+                    <li><a href="#">直播回放类</a></li>
+                    <li><a href="#">游戏音效类</a></li>
+                    <li><a href="#">情感表达类</a></li>
+                    <li><a href="#">幽默吐槽类</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-widget">
+                <h4 class="widget-title">热门标签</h4>
+                <div class="tag-cloud">
+                    <a href="#" class="tag">震惊</a>
+                    <a href="#" class="tag">无语</a>
+                    <a href="#" class="tag">吐槽</a>
+                    <a href="#" class="tag">愤怒</a>
+                    <a href="#" class="tag">震惊</a>
+                    <a href="#" class="tag">无奈</a>
+                    <a href="#" class="tag">搞笑</a>
+                    <a href="#" class="tag">吐槽</a>
+                </div>
+            </div>
+
+            <div class="sidebar-widget">
+                <h4 class="widget-title">使用指南</h4>
+                <ul class="info-list">
+                    <li>支持 MP3/WAV 格式</li>
+                    <li>高清无损音质</li>
+                    <li>商用授权协议</li>
+                    <li>每日定时更新</li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        <div class="footer-links">
+            <a href="#">关于我们</a>
+            <a href="#">版权声明</a>
+            <a href="#">用户协议</a>
+            <a href="#">联系客服</a>
+        </div>
+        <p class="copyright">&copy; 2023 粗口mp3素材库. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Simple interaction for the demo
+        function showToast(message) {
+            // Create a temporary toast element
+            const toast = document.createElement('div');
+            toast.textContent = message;
+            toast.style.position = 'fixed';
+            toast.style.bottom = '20px';
+            toast.style.left = '50%';
+            toast.style.transform = 'translateX(-50%)';
+            toast.style.backgroundColor = 'rgba(0,0,0,0.8)';
+            toast.style.color = 'white';
+            toast.style.padding = '10px 20px';
+            toast.style.borderRadius = '4px';
+            toast.style.zIndex = '1000';
+            toast.style.transition = 'opacity 0.3s';
+            
+            document.body.appendChild(toast);
+
+            // Remove after 2 seconds
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                setTimeout(() => {
+                    document.body.removeChild(toast);
+                }, 300);
+            }, 2000);
+        }
+
+        function togglePlay(icon) {
+            // Toggle play/pause icon state for demo
+            if (icon.textContent === '▶') {
+                icon.textContent = '❚❚';
+                showToast('正在试听音频...');
+            } else {
+                icon.textContent = '▶';
+                showToast('试听结束');
+            }
+        }
+    </script>
+</body>
+</html>
