@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>proumb精选视频 - 深度评测与实用技巧分享平台</title>
+    <meta name="description" content="proumb精选视频提供高清、高质量的精选视频内容，涵盖数码科技、生活技巧、影视解说及深度评测。我们致力于为用户提供有价值的视频资讯与观看体验。">
+    <meta name="keywords" content="proumb精选视频,视频推荐,数码评测,生活技巧,影视解说">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #f59e0b;
+            --text-main: #1f2937;
+            --text-secondary: #4b5563;
+            --text-light: #9ca3af;
+            --bg-body: #f3f4f6;
+            --bg-card: #ffffff;
+            --spacing-unit: 1rem;
+            --container-width: 1200px;
+            --border-radius: 8px;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header & Nav */
+        header {
+            background-color: var(--bg-card);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-inner {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background: #f3f4f6;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            width: 300px;
+        }
+
+        .search-bar input {
+            border: none;
+            background: transparent;
+            outline: none;
+            width: 100%;
+            margin-left: 0.5rem;
+            color: var(--text-main);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 4rem 1rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-tags {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            backdrop-filter: blur(4px);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: var(--container-width);
+            margin: 2rem auto;
+            padding: 0 var(--spacing-unit);
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 2rem;
+        }
+
+        /* Video Grid */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 1.2em;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .video-card {
+            background: var(--bg-card);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .thumbnail-wrapper {
+            position: relative;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            background-color: #000;
+        }
+
+        .thumbnail {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .play-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .video-card:hover .play-overlay {
+            opacity: 1;
+        }
+
+        .play-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+        }
+
+        .card-content {
+            padding: 1rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .card-meta {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+        }
+
+        .card-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            flex-grow: 1;
+        }
+
+        .card-footer {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding-top: 0.8rem;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .author-avatar {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: #ddd;
+        }
+
+        .author-name {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        /* Sidebar */
+        aside {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .sidebar-widget {
+            background: var(--bg-card);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .widget-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #f3f4f6;
+        }
+
+        .category-list li {
+            margin-bottom: 0.8rem;
+        }
+
+        .category-list a {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .category-list a:hover {
+            color: var(--primary-color);
+        }
+
+        .count {
+            background: #f3f4f6;
+            padding: 0.1rem 0.5rem;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        .trending-item {
+            display: flex;
+            align-items: start;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .trending-rank {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-light);
+            line-height: 1;
+        }
+
+        .trending-info h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 0.2rem;
+        }
+
+        .trending-info span {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1f2937;
+            color: #d1d5db;
+            padding: 3rem 1rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-col h3 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-col a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            max-width: var(--container-width);
+            margin: 2rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid #374151;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .header-inner {
+                padding: 0 1rem;
+            }
+
+            nav {
+                display: none; /* Simplified for mobile, normally would be a hamburger menu */
+            }
+
+            .search-bar {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-inner">
+            <a href="#" class="logo">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect>
+                    <line x1="7" y1="2" x2="7" y2="22"></line>
+                    <line x1="17" y1="2" x2="17" y2="22"></line>
+                    <line x1="2" y1="12" x2="22" y2="12"></line>
+                    <line x1="2" y1="7" x2="7" y2="7"></line>
+                    <line x1="2" y1="17" x2="7" y2="17"></line>
+                    <line x1="17" y1="17" x2="22" y2="17"></line>
+                    <line x1="17" y1="7" x2="22" y2="7"></line>
+                </svg>
+                proumb<span>精选视频</span>
+            </a>
+            
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#">数码科技</a></li>
+                    <li><a href="#">生活技巧</a></li>
+                    <li><a href="#">影视解说</a></li>
+                    <li><a href="#">深度评测</a></li>
+                </ul>
+            </nav>
+
+            <div class="search-bar">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" placeholder="搜索视频内容...">
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>发现高质量视频内容</h1>
+        <p>proumb精选视频汇聚全网优质创作者，为您提供最前沿的数码评测、最实用的生活指南与最深刻的影视解析。</p>
+        <div class="hero-tags">
+            <span class="tag"># 智能手机评测</span>
+            <span class="tag"># 摄影技巧</span>
+            <span class="tag"># 厨房妙招</span>
+            <span class="tag"># 经典电影回顾</span>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Main Content Area -->
+        <main>
+            <div class="section-header">
+                <h2 class="section-title">热门推荐</h2>
+                <a href="#" style="color: var(--primary-color); font-size: 0.9rem; font-weight: 500;">查看更多 &rarr;</a>
+            </div>
+
+            <div class="video-grid">
+                <!-- Video Card 1 -->
+                <article class="video-card">
+                    <div class="thumbnail-wrapper">
+                        <img src="https://picsum.photos/seed/tech1/400/225" alt="手机评测缩略图" class="thumbnail">
+                        <div class="play-overlay">
+                            <div class="play-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">2024年度旗舰手机深度横评：性能、影像与续航全解析</h3>
+                        <div class="card-meta">
+                            <span>12:34</span>
+                            <span>2天前</span>
+                        </div>
+                        <p class="card-desc">我们选取了市面上最热门的三款旗舰机型进行全方位对比，看看谁才是真正的综合之王。</p>
+                        <div class="card-footer">
+                            <img src="https://picsum.photos/seed/avatar1/50/50" alt="作者头像" class="author-avatar">
+                            <span class="author-name">科技前沿观察</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Video Card 2 -->
+                <article class="video-card">
+                    <div class="thumbnail-wrapper">
+                        <img src="https://picsum.photos/seed/life1/400/225" alt="生活技巧缩略图" class="thumbnail">
+                        <div class="play-overlay">
+                            <div class="play-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">10个厨房收纳妙招，让家瞬间整洁10倍</h3>
+                        <div class="card-meta">
+                            <span>08:15</span>
+                            <span>5天前</span>
+                        </div>
+                        <p class="card-desc">不需要购买昂贵的收纳盒，利用身边的废旧材料，轻松解决厨房杂物堆积问题。</p>
+                        <div class="card-footer">
+                            <img src="https://picsum.photos/seed/avatar2/50/50" alt="作者头像" class="author-avatar">
+                            <span class="author-name">生活家小王</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Video Card 3 -->
+                <article class="video-card">
+                    <div class="thumbnail-wrapper">
+                        <img src="https://picsum.photos/seed/movie1/400/225" alt="影视解说缩略图" class="thumbnail">
+                        <div class="play-overlay">
+                            <div class="play-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">诺兰导演的叙事艺术：重温《盗梦空间》的细节设计</h3>
+                        <div class="card-meta">
+                            <span>15:42</span>
+                            <span>1周前</span>
+                        </div>
+                        <p class="card-desc">深度解析电影中的时空结构、道具隐喻以及配乐如何推动剧情发展。</p>
+                        <div class="card-footer">
+                            <img src="https://picsum.photos/seed/avatar3/50/50" alt="作者头像" class="author-avatar">
+                            <span class="author-name">光影深处</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Video Card 4 -->
+                <article class="video-card">
+                    <div class="thumbnail-wrapper">
+                        <img src="https://picsum.photos/seed/gadget/400/225" alt="数码产品缩略图" class="thumbnail">
+                        <div class="play-overlay">
+                            <div class="play-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">复古胶片相机指南：新手入门如何选择第一台相机</h3>
+                        <div class="card-meta">
+                            <span>10:20</span>
+                            <span>2周前</span>
+                        </div>
+                        <p class="card-desc">胶片摄影的魅力与成本分析，推荐几款适合初学者的经典机型。</p>
+                        <div class="card-footer">
+                            <img src="https://picsum.photos/seed/avatar4/50/50" alt="作者头像" class="author-avatar">
+                            <span class="author-name">镜头记录者</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <div class="section-header" style="margin-top: 3rem;">
+                <h2 class="section-title">最新更新</h2>
+            </div>
+            
+            <div class="video-grid">
+                <article class="video-card">
+                    <div class="thumbnail-wrapper">
+                        <img src="https://picsum.photos/seed/travel/400/225" alt="旅游视频缩略图" class="thumbnail">
+                        <div class="play-overlay">
+                            <div class="play-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">日本京都一日游攻略：避开人潮的隐藏景点</h3>
+                        <div class="card-meta">
+                            <span>09:55</span>
+                            <span>3小时前</span>
+                        </div>
+                        <p class="card-desc">分享我在京都发现的几家绝美茶屋和安静的寺庙，适合独自旅行者。</p>
+                        <div class="card-footer">
+                            <img src="https://picsum.photos/seed/avatar5/50/50" alt="作者头像" class="author-avatar">
+                            <span class="author-name">行走的背包</span>
+                        </div>
+                    </div>
+                </article>
+                 <article class="video-card">
+                    <div class="thumbnail-wrapper">
+                        <img src="https://picsum.photos/seed/work/400/225" alt="办公技巧缩略图" class="thumbnail">
+                        <div class="play-overlay">
+                            <div class="play-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">提升工作效率的神器推荐：AI工具全解析</h3>
+                        <div class="card-meta">
+                            <span>11:10</span>
+                            <span>1天前</span>
+                        </div>
+                        <p class="card-desc">从文案写作到代码辅助，盘点目前最好用的几款AI办公软件。</p>
+                        <div class="card-footer">
+                            <img src="https://picsum.photos/seed/avatar6/50/50" alt="作者头像" class="author-avatar">
+                            <span class="author-name">职场进化论</span>
+                        </div>
+                    </div>
+                </article>
+                 <article class="video-card">
+                    <div class="thumbnail-wrapper">
+                        <img src="https://picsum.photos/seed/music/400/225" alt="音乐视频缩略图" class="thumbnail">
+                        <div class="play-overlay">
+                            <div class="play-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">古典音乐入门：如何听懂巴赫的赋格曲</h3>
+                        <div class="card-meta">
+                            <span>14:30</span>
+                            <span>4天前</span>
+                        </div>
+                        <p class="card-desc">用通俗的语言解释复杂的音乐结构，带你领略古典音乐的逻辑之美。</p>
+                        <div class="card-footer">
+                            <img src="https://picsum.photos/seed/avatar7/50/50" alt="作者头像" class="author-avatar">
+                            <span class="author-name">乐评人老李</span>
+                        </div>
+                    </div>
+                </article>
+                 <article class="video-card">
+                    <div class="thumbnail-wrapper">
+                        <img src="https://picsum.photos/seed/fitness/400/225" alt="健身视频缩略图" class="thumbnail">
+                        <div class="play-overlay">
+                            <div class="play-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">30分钟居家HIIT训练：燃脂减脂高效方案</h3>
+                        <div class="card-meta">
+                            <span>06:45</span>
+                            <span>6天前</span>
+                        </div>
+                        <p class="card-desc">不需要器械，跟着视频做，轻松在家完成高强度间歇训练。</p>
+                        <div class="card-footer">
+                            <img src="https://picsum.photos/seed/avatar8/50/50" alt="作者头像" class="author-avatar">
+                            <span class="author-name">健康生活家</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </main>
+
+        <!-- Sidebar -->
+        <aside>
+            <div class="sidebar-widget">
+                <h3 class="widget-title">热门分类</h3>
+                <ul class="category-list">
+                    <li><a href="#">数码科技 <span class="count">128</span></a></li>
+                    <li><a href="#">生活技巧 <span class="count">95</span></a></li>
+                    <li><a href="#">影视解说 <span class="count">210</span></a></li>
+                    <li><a href="#">旅游攻略 <span class="count">64</span></a></li>
+                    <li><a href="#">美食烹饪 <span class="count">112</span></a></li>
+                    <li><a href="#">音乐艺术 <span class="count">45</span></a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-widget">
+                <h3 class="widget-title">本周热门</h3>
+                <div class="trending-list">
+                    <div class="trending-item">
+                        <span class="trending-rank">1</span>
+                        <div class="trending-info">
+                            <h4>iPhone 15 Pro Max 实测：钛金属真的更耐用吗？</h4>
+                            <span>1.2M 次观看</span>
+                        </div>
+                    </div>
+                    <div class="trending-item">
+                        <span class="trending-rank">2</span>
+                        <div class="trending-info">
+                            <h4>千万不要乱买！这5种家电买了就是浪费钱</h4>
+                            <span>980K 次观看</span>
+                        </div>
+                    </div>
+                    <div class="trending-item">
+                        <span class="trending-rank">3</span>
+                        <div class="trending-info">
+                            <h4>电影《奥本海默》深度解析：原子弹背后的故事</h4>
+                            <span>850K 次观看</span>
+                        </div>
+                    </div>
+                    <div class="trending-item">
+                        <span class="trending-rank">4</span>
+                        <div class="trending-info">
+                            <h4>极简主义生活：扔掉50%的东西后，我的生活变好了</h4>
+                            <span>720K 次观看</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <div class="logo" style="margin-bottom: 1rem;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect>
+                        <line x1="7" y1="2" x2="7" y2="22"></line>
+                        <line x1="17" y1="2" x2="17" y2="22"></line>
+                        <line x1="2" y1="12" x2="22" y2="12"></line>
+                        <line x1="2" y1="7" x2="7" y2="7"></line>
+                        <line x1="2" y1="17" x2="7" y2="17"></line>
+                        <line x1="17" y1="17" x2="22" y2="17"></line>
+                        <line x1="17" y1="7" x2="22" y2="7"></line>
+                    </svg>
+                    <span style="color:white;">proumb精选视频</span>
+                </div>
+                <p style="font-size: 0.9rem; color: #9ca3af;">致力于为用户提供最优质、最全面的视频内容推荐服务。发现精彩，分享生活。</p>
+            </div>
+            <div class="footer-col">
+                <h3>关于我们</h3>
+                <ul>
+                    <li><a href="#">平台介绍</a></li>
+                    <li><a href="#">加入我们</a></li>
+                    <li><a href="#">联系方式</a></li>
+                    <li><a href="#">隐私政策</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>内容分类</h3>
+                <ul>
+                    <li><a href="#">数码评测</a></li>
+                    <li><a href="#">生活百科</a></li>
+                    <li><a href="#">影视解说</a></li>
+                    <li><a href="#">旅行Vlog</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>关注我们</h3>
+                <ul>
+                    <li><a href="#">微信公众号</a></li>
+                    <li><a href="#">新浪微博</a></li>
+                    <li><a href="#">Bilibili账号</a></li>
+                    <li><a href="#">YouTube频道</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 proumb精选视频. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+                          </html>
